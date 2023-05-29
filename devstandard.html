@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>前端开发规范 | 目录</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    
+    <meta name="description" content="基于vuepress的博客文档">
+    
+    <link rel="preload" href="/assets/css/0.styles.e8e4f3a3.css" as="style"><link rel="preload" href="/assets/js/app.91e57898.js" as="script"><link rel="preload" href="/assets/js/2.733019b2.js" as="script"><link rel="preload" href="/assets/js/9.9e6063fe.js" as="script"><link rel="prefetch" href="/assets/js/10.8b289945.js"><link rel="prefetch" href="/assets/js/11.59046c54.js"><link rel="prefetch" href="/assets/js/3.4122aa84.js"><link rel="prefetch" href="/assets/js/4.d12742be.js"><link rel="prefetch" href="/assets/js/5.216cae74.js"><link rel="prefetch" href="/assets/js/6.2d0a63f8.js"><link rel="prefetch" href="/assets/js/7.cbdff39e.js"><link rel="prefetch" href="/assets/js/8.3c962551.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e8e4f3a3.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">目录</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/" aria-current="page" class="sidebar-link">大前端团队规划</a></li><li><a href="/devstandard.html" aria-current="page" class="active sidebar-link">前端开发规范</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/devstandard.html#条件判断" class="sidebar-link">条件判断</a></li><li class="sidebar-sub-header"><a href="/devstandard.html#使用三元运算符优化条件判断" class="sidebar-link">使用三元运算符优化条件判断</a></li><li class="sidebar-sub-header"><a href="/devstandard.html#提前让函数退出代替嵌套条件分支-用卫语句-guard-clauses-替换嵌套的条件语句" class="sidebar-link">提前让函数退出代替嵌套条件分支/用卫语句(Guard Clauses)替换嵌套的条件语句</a></li></ul></li><li><a href="/checklist.html" class="sidebar-link">前端代码走查CHECKLIST</a></li><li><a href="/gitstandard.html" class="sidebar-link">git 提交规范</a></li><li><a href="/gitmergestandard.html" class="sidebar-link">git 分支合并规范</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="前端开发规范"><a href="#前端开发规范" class="header-anchor">#</a> 前端开发规范</h1> <h2 id="条件判断"><a href="#条件判断" class="header-anchor">#</a> 条件判断</h2> <ul><li>if 多条件判断</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 冗余</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>value <span class="token operator">===</span> <span class="token number">1</span>  <span class="token operator">||</span> value <span class="token operator">===</span> <span class="token string">'one'</span> <span class="token operator">||</span> value <span class="token operator">===</span> <span class="token string">'two'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token comment">// 推荐1</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'one'</span><span class="token punctuation">,</span> <span class="token string">'two'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token comment">// 推荐2（es6）</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'one'</span><span class="token punctuation">,</span> <span class="token string">'two'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</code></pre></div><ul><li>合并条件 简化判断</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// before:</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>fruit <span class="token operator">===</span> <span class="token string">'apple'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>fruit <span class="token operator">===</span> <span class="token string">'cherry'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span>  <span class="token keyword">if</span> <span class="token punctuation">(</span>fruit <span class="token operator">===</span> <span class="token string">'peach'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// after:</span>
+<span class="token keyword">const</span> redFruits <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'apple'</span><span class="token punctuation">,</span> <span class="token string">'cherry'</span><span class="token punctuation">,</span> <span class="token string">'peach'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">return</span> redFruits<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span>fruit<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><ul><li>合并条件表达式</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 当检查条件各不相同，最终行为却一致时，应该使用“逻辑或”和“逻辑与”将它们合并成一个条件表达式。从而使条件检查用意更清晰</span>
+
+<span class="token comment">// before:</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>obj<span class="token punctuation">.</span>a <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>obj<span class="token punctuation">.</span>b <span class="token operator">&gt;</span> <span class="token number">10</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>obj<span class="token punctuation">.</span>c <span class="token operator">===</span> <span class="token string">'school'</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+<span class="token comment">// after:</span>
+<span class="token keyword">function</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> obj<span class="token punctuation">.</span>a <span class="token operator">&lt;</span> <span class="token number">2</span> <span class="token operator">||</span> obj<span class="token punctuation">.</span>b <span class="token operator">&gt;</span> <span class="token number">10</span> <span class="token operator">||</span> obj<span class="token punctuation">.</span>c <span class="token operator">===</span> <span class="token string">'school'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+</code></pre></div><ul><li>把条件分支语句提炼成函数</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 复杂的条件分支语句时导致程序难以阅读和理解的重要原因，而且容易导致形成一个庞大的函数</span>
+<span class="token comment">// 有时可以将条件分支语句提炼成语义化的函数，使代码更加直观，逻辑清晰</span>
+
+<span class="token comment">// before:</span>
+<span class="token comment">// 根据不用季节决定打折力度</span>
+<span class="token keyword">function</span> <span class="token function">getPrice</span><span class="token punctuation">(</span><span class="token parameter">price</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> d <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>d<span class="token punctuation">.</span><span class="token function">getMonth</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;=</span> <span class="token number">6</span> <span class="token operator">&amp;&amp;</span> d<span class="token punctuation">.</span><span class="token function">getMonth</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number">9</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 夏天</span>
+    <span class="token keyword">return</span> price <span class="token operator">*</span> <span class="token number">0.8</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> price<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// after:</span>
+<span class="token comment">// 是否夏天</span>
+<span class="token keyword">function</span> <span class="token function">isSummer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> d <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> d<span class="token punctuation">.</span><span class="token function">getMonth</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;=</span> <span class="token number">6</span> <span class="token operator">&amp;&amp;</span> d<span class="token punctuation">.</span><span class="token function">getMonth</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number">9</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">function</span> <span class="token function">getPrice</span><span class="token punctuation">(</span><span class="token parameter">price</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isSummer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> price <span class="token operator">*</span> <span class="token number">0.8</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> price<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="使用三元运算符优化条件判断"><a href="#使用三元运算符优化条件判断" class="header-anchor">#</a> 使用三元运算符优化条件判断</h2> <ul><li>当有不包含复杂逻辑时的 if...else，可以使用三元运算符来简化</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// before:</span>
+<span class="token keyword">let</span> test<span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">&gt;</span> <span class="token number">100</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  test <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+  test <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// after:</span>
+<span class="token keyword">let</span> test <span class="token operator">=</span> x <span class="token operator">&gt;</span> <span class="token number">10</span> <span class="token operator">?</span> <span class="token boolean">true</span> <span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token comment">// 或简写：</span>
+<span class="token keyword">let</span> test <span class="token operator">=</span> x <span class="token operator">&gt;</span> <span class="token number">10</span><span class="token punctuation">;</span>
+</code></pre></div><ul><li>当使用三元嵌套时，可能会造成理解的复杂度，可以增加适当的注释</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> x <span class="token operator">=</span> <span class="token number">300</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> test <span class="token operator">=</span> x <span class="token operator">&gt;</span> <span class="token number">100</span>
+              <span class="token operator">?</span> <span class="token string">'greater 100'</span>
+              <span class="token operator">:</span> x <span class="token operator">&lt;</span> <span class="token number">50</span>
+                <span class="token operator">?</span> <span class="token string">'less 50'</span>
+                <span class="token operator">:</span> <span class="token string">'between 50 and 100'</span><span class="token punctuation">;</span>
+</code></pre></div><h2 id="提前让函数退出代替嵌套条件分支-用卫语句-guard-clauses-替换嵌套的条件语句"><a href="#提前让函数退出代替嵌套条件分支-用卫语句-guard-clauses-替换嵌套的条件语句" class="header-anchor">#</a> 提前让函数退出代替嵌套条件分支/用卫语句(Guard Clauses)替换嵌套的条件语句</h2> <p>条件表达式通常有两种风格。</p> <p>第一种风格是：两个条件分支都属于正常行为。</p> <p>第二种风格则是：只有一个条件分支是正常行为，另一个分支则是异常的情况。</p> <p>这两类条件表达式有不同的用途，这一点应该通过代码表现出来。如果两条分支都是正常行为，就应该使用形如if...else...的条件表达式；如果某个条件极其罕见，就应该单独检查该条件，并在该条件为真时立刻从函数中返回。这样的单独检查常常被称为“卫语句”（guard clauses）。</p> <p>以卫语句取代嵌套条件表达式的精髓就是：给某一条分支以特别的重视。如果使用if-then-else结构，你对if分支和else分支的重视是同等的。这样的代码结构传递给阅读者的消息就是：各个分支有同样的重要性。卫语句就不同了，它告诉阅读者：“这种情况不是本函数的核心逻辑所关心的，如果它真发生了，请做一些必要的整理工作，然后退出。”</p> <p>“每个函数只能有一个入口和一个出口”的观念，现今的编程语言都会强制保证每个函数只有一个入口，至于“单一出口”规则，其实不是那么有用。保持代码清晰才是最关键的：如果单一出口能使这个函数更清楚易读，那么就使用单一出口；否则就不必这么做。</p> <p>卫语句就是把复杂的条件表达式拆分成多个条件表达式，减少嵌套。</p> <ul><li>使用时机：一般来说，当出现if语句时就可以考虑是否使用卫语句 无论if是仅出现一次，还是多次</li> <li>为什么用：一般来说卫语句使用是为了两个事情，1）减少智力成本 2）结构优化</li> <li>应用场景（哪里用）：</li></ul> <ol><li>长if语句</li></ol> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 仅需将代码重构下即可，逻辑完全不变</span>
+<span class="token comment">// before:</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span>list<span class="token punctuation">.</span>length<span class="token operator">&gt;</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  list<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token operator">=&gt;</span>item<span class="token punctuation">)</span>
+  list<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token operator">=&gt;</span>item<span class="token punctuation">)</span>
+  list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>list<span class="token punctuation">]</span>
+  <span class="token comment">// 就是假装逻辑特别长</span>
+  <span class="token comment">// 就是假装逻辑特别长</span>
+  <span class="token comment">// 就是假装逻辑特别长</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 结束了 else没有处理</span>
+
+
+<span class="token comment">// after:</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span>list<span class="token punctuation">.</span>length<span class="token operator">&lt;=</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span>
+list<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token operator">=&gt;</span>item<span class="token punctuation">)</span>
+list<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token operator">=&gt;</span>item<span class="token punctuation">)</span>
+list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>list<span class="token punctuation">]</span>
+<span class="token comment">// 就是假装逻辑特别长</span>
+<span class="token comment">// 就是假装逻辑特别长</span>
+<span class="token comment">// 就是假装逻辑特别长</span>
+
+处理思路：就是将<span class="token keyword">if</span>取反后处理<span class="token keyword">else</span>逻辑即可
+</code></pre></div><ol start="2"><li>if-else嵌套地狱</li></ol> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// before:</span>
+<span class="token keyword">function</span> <span class="token function">getPayAmount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> result<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>isDead<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        result <span class="token operator">=</span> <span class="token function">deadAmount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>isSeparated<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            result <span class="token operator">=</span> <span class="token function">separatedAmount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>isRetired<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                result <span class="token operator">=</span> <span class="token function">retiredAmount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+                result <span class="token operator">=</span> <span class="token function">normalPayAmount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token comment">// after:</span>
+<span class="token keyword">function</span> <span class="token function">getPayAmount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>isDead<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token function">deadAmount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>isSeparated<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token function">separatedAmount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>isRetired<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token function">retiredAmount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token function">normalPayAmount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+处理后，多层次判断结构变为单层次结构，作用域更加明显，逻辑由嵌套变为线性处理
+处理思路：
+选中最外层需要被替换的条件逻辑，将其替换为卫语句。
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/" class="prev router-link-active">
+        大前端团队规划
+      </a></span> <span class="next"><a href="/checklist.html">
+        前端代码走查CHECKLIST
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.91e57898.js" defer></script><script src="/assets/js/2.733019b2.js" defer></script><script src="/assets/js/9.9e6063fe.js" defer></script>
+  </body>
+</html>
